@@ -1092,7 +1092,7 @@ async function generateBuildPDF(customerName, customerEmail, customerPhone, layo
   doc.roundedRect(40, 160, W - 80, boxH, 4, 4, 'F');
   const imgW = 120, imgH = 62;
   if (layoutImgData) {
-    doc.addImage(layoutImgData, 'JPEG', 52, 169, imgW, imgH);
+    doc.addImage(layoutImgData, 'JPEG', 52, 169, imgW, imgH, '', 'NONE');
   }
   const textX = layoutImgData ? 52 + imgW + 14 : 56;
   doc.setFont('helvetica', 'bold');
