@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bespoke Minibus — Sprinter Shuttle Conversions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":["AutomotiveBusiness","LocalBusiness"],"name":"Bespoke Minibus","description":"Bespoke Minibus specializes in custom, made-to-order Mercedes-Benz Sprinter van shuttle and minibus conversions. Certified Mercedes-Benz Sprinter Expert Upfitter since 1993.","url":"https://bespokeminibus.com/","telephone":"+1-818-650-2987","email":"info@bespokeminibus.com","priceRange":"$68,969 - $89,399","foundingDate":"1993","address":{"@type":"PostalAddress","streetAddress":"7641 Burnet Ave","addressLocality":"Van Nuys","addressRegion":"CA","postalCode":"91405","addressCountry":"US"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a Bespoke Minibus cost?","acceptedAnswer":{"@type":"Answer","text":"A Bespoke Sprinter Minibus build ranges in price from $68,969 to $89,399 depending on layout and options."}},{"@type":"Question","name":"How long does it take to build a Bespoke Sprinter Minibus?","acceptedAnswer":{"@type":"Answer","text":"Creating a Bespoke Sprinter Minibus shuttle takes between 3 and 6 weeks."}},{"@type":"Question","name":"Is Bespoke Minibus a certified Mercedes-Benz upfitter?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bespoke Coach is a certified Mercedes-Benz Sprinter Expert Upfitter."}}]}]
+</script>
+<style>
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#0a0a0a;font-family:'Open Sans',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:#2b97d6;color:#fff;}
+a{color:inherit;text-decoration:none;}
+button{border:none;cursor:pointer;}
+
+/* Nav links */
+.nav-link{
+  font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1.5px;
+  text-transform:uppercase;text-decoration:none;padding:8px 13px;
+  color:#fff;transition:color .15s;background:none;border:none;cursor:pointer;
+}
+.nav-link:hover{color:#2b97d6;}
+.nav-link.active{color:#2b97d6;}
+
+/* Footer nav */
+.footer-link{
+  font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1.5px;
+  text-transform:uppercase;padding:6px 14px;color:#cfcfcf;transition:color .15s;
+  background:none;border:none;cursor:pointer;
+}
+.footer-link:hover{color:#2b97d6;}
+
+/* Social */
+.social-link{color:#cfcfcf;font-size:19px;transition:color .15s;}
+.social-link:hover{color:#2b97d6;}
+
+/* CTA buttons */
+.btn-primary{
+  display:inline-block;background:#2b97d6;color:#fff;
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+  font-size:15px;font-weight:500;padding:16px 42px;text-decoration:none;
+  cursor:pointer;border:none;transition:background .15s;
+}
+.btn-primary:hover{background:#1f86c2;}
+.btn-primary.lg{padding:18px 48px;}
+
+/* Gallery grid buttons */
+.gallery-item{
+  position:relative;display:block;aspect-ratio:4/3;overflow:hidden;
+  background:#141414;border:1px solid #1c1c1c;padding:0;cursor:pointer;width:100%;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s;}
+.gallery-item:hover img{transform:scale(1.06);}
+
+/* Home hero grid */
+.hero-grid-btn{
+  display:block;aspect-ratio:4/3;overflow:hidden;background:#111;
+  border:none;padding:0;cursor:pointer;width:100%;
+}
+.hero-grid-btn img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.hero-grid-btn:hover img{transform:scale(1.05);}
+
+/* Option cards */
+.option-card{
+  position:relative;display:flex;flex-direction:column;background:#111;
+  cursor:pointer;text-align:left;padding:0;overflow:hidden;transition:border-color .15s;
+  border:1px solid #262626;
+}
+.option-card.selected{border:2px solid #2b97d6;}
+
+/* Builder tabs */
+.step-tab{
+  display:flex;align-items:center;gap:9px;padding:9px 15px;cursor:pointer;
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;
+  font-size:13px;border:1px solid #2a2a2a;background:transparent;color:#9a9a9a;
+  transition:all .15s;
+}
+.step-tab.active{border-color:#2b97d6;background:#2b97d6;color:#fff;}
+.step-num{
+  display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+  border-radius:50%;font-size:11px;font-family:'Oswald',sans-serif;
+  background:#2a2a2a;color:#cfcfcf;
+}
+.step-tab.active .step-num{background:#fff;color:#2b97d6;}
+
+/* Filter chips */
+.filter-chip{
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;
+  font-size:13px;padding:8px 16px;cursor:pointer;border:1px solid #2b2b2b;
+  background:transparent;color:#bdbdbd;transition:all .15s;
+}
+.filter-chip.active{background:#2b97d6;color:#fff;border-color:#2b97d6;}
+
+/* FAQ */
+.faq-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:transparent;border:none;cursor:pointer;padding:20px 22px;text-align:left;
+}
+
+/* Form inputs */
+.form-input{
+  background:#0a0a0a;border:1px solid #2b2b2b;color:#fff;
+  font-family:'Open Sans',sans-serif;font-size:15px;padding:13px 15px;
+  outline:none;width:100%;transition:border-color .15s;
+}
+.form-input:focus{border-color:#2b97d6;}
+
+/* Lightbox */
+.lb-thumb{flex:0 0 auto;width:74px;height:56px;object-fit:cover;cursor:pointer;display:block;border:2px solid transparent;opacity:.55;transition:opacity .15s,border-color .15s;}
+.lb-thumb.active{border-color:#2b97d6;opacity:1;}
+.lb-nav-btn{
+  flex:0 0 auto;width:52px;height:52px;border-radius:50%;border:1px solid #333;
+  background:rgba(20,20,20,0.8);color:#fff;font-size:18px;cursor:pointer;transition:background .15s,border-color .15s;
+}
+.lb-nav-btn:hover{background:#2b97d6;border-color:#2b97d6;}
+
+/* Builder nav buttons */
+.builder-btn-prev{
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+  font-size:14px;padding:13px 26px;background:#1a1a1a;color:#fff;border:none;cursor:pointer;
+}
+.builder-btn-prev.disabled{color:#555;pointer-events:none;opacity:.5;}
+.builder-btn-next{
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+  font-size:14px;padding:13px 26px;background:#2b97d6;color:#fff;border:none;cursor:pointer;
+  transition:background .15s;
+}
+.builder-btn-next:hover{background:#1f86c2;}
+
+/* Directions card */
+.directions-card{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  margin-top:30px;background:#111;border:1px solid #232323;padding:22px 24px;
+  text-decoration:none;transition:border-color .15s;
+}
+.directions-card:hover{border-color:#2b97d6;}
+
+/* Quote sidebar button */
+.quote-sidebar-btn{
+  display:block;width:100%;text-align:center;background:#2b97d6;color:#fff;
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+  font-size:15px;font-weight:500;padding:15px;border:none;cursor:pointer;
+  transition:background .15s;
+}
+.quote-sidebar-btn:hover{background:#1f86c2;}
+
+/* Edit build link */
+.edit-build-btn{
+  background:transparent;border:none;cursor:pointer;font-family:'Oswald',sans-serif;
+  text-transform:uppercase;letter-spacing:1.5px;font-size:13px;color:#9a9a9a;padding:0;
+  margin-bottom:18px;transition:color .15s;
+}
+.edit-build-btn:hover{color:#2b97d6;}
+
+/* Build another button */
+.build-another-btn{
+  background:transparent;border:1px solid #2b97d6;color:#2b97d6;
+  font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;
+  font-size:13px;padding:12px 24px;cursor:pointer;transition:all .15s;
+}
+.build-another-btn:hover{background:#2b97d6;color:#fff;}
+
+/* Page visibility */
+.page-section{display:none;}
+.page-section.active{display:block;}
+</style>
+</head>
+<body style="background:#0a0a0a;color:#fff;min-height:100vh;">
+
+<!-- ===================== HEADER ===================== -->
+<header style="position:sticky;top:0;z-index:60;background:rgba(10,10,10,0.94);backdrop-filter:blur(8px);border-bottom:1px solid #1b1b1b;">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:13px 28px;flex-wrap:wrap;">
+    <button class="nav-link" data-go="home" style="display:flex;align-items:center;gap:13px;text-decoration:none;padding:0;background:none;">
+      <img src="https://bespokeminibus.com/wp-content/uploads/2019/04/cropped-EMblem_Logo_W-1.png" alt="Bespoke Minibus logo" style="height:42px;width:auto;display:block;">
+      <span style="font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:1.5px;color:#8c8c8c;text-transform:uppercase;">Sprinter Shuttle Conversions</span>
+    </button>
+    <nav aria-label="Primary" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;flex:1 1 auto;justify-content:center;" id="main-nav">
+      <button class="nav-link" data-go="home">Home</button>
+      <button class="nav-link" data-go="about">About</button>
+      <button class="nav-link" data-go="gallery">Gallery</button>
+      <button class="nav-link" data-go="builder">Build &amp; Price</button>
+      <button class="nav-link" data-go="faq">FAQ</button>
+      <button class="nav-link" data-go="contact">Contact</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HOME ===================== -->
+<div id="page-home" class="page-section">
+  <section style="position:relative;min-height:80vh;display:flex;align-items:center;background-image:linear-gradient(rgba(8,8,8,0.5),rgba(8,8,8,0.72)),url('assets/home-hero.jpg');background-size:cover;background-position:center 28%;">
+    <div style="max-width:1240px;margin:0 auto;width:100%;padding:70px 28px;">
+      <div style="font-family:'Oswald',sans-serif;letter-spacing:5px;color:#2b97d6;font-size:14px;text-transform:uppercase;margin-bottom:16px;">Since 1993</div>
+      <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5.2vw,66px);line-height:1.04;margin:0 0 20px;max-width:840px;">Mercedes-Benz Sprinter Minibus &amp; Shuttle Conversions</h1>
+      <p style="font-family:'Open Sans',sans-serif;color:#dcdcdc;font-size:clamp(16px,1.6vw,20px);max-width:640px;line-height:1.65;margin:0 0 34px;">Custom, made-to-order luxury Sprinter van conversions built around your vision — engineered, designed, and fabricated by the best in the business.</p>
+      <button class="btn-primary" data-go="builder">Build a Minibus</button>
+    </div>
+  </section>
+
+  <section style="background:#0d0d0d;padding:88px 28px;">
+    <div style="max-width:1080px;margin:0 auto;text-align:center;">
+      <div style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;color:#2b97d6;letter-spacing:2px;font-size:15px;margin-bottom:10px;">Since 1993</div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:500;color:#fff;font-size:clamp(20px,2.4vw,30px);line-height:1.4;margin:0 auto 34px;max-width:760px;"><span style="color:#2b97d6;font-style:italic;">be·spoke</span> <span style="color:#7d7d7d;font-size:0.7em;">[bih-spohk]</span> adjective; (British) made to order: "a bespoke sprinter".</h2>
+      <p style="font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:16px;line-height:1.9;margin:0 auto;max-width:880px;">The Bespoke Minibus team is always striving to create new designs, find new materials, and technologies to incorporate into our van conversions. Using only the finest materials and products, each Bespoke Sprinter is truly one of a kind. With our extensive background in mobile electronics and our development of cutting-edge control systems, Bespoke Minibus incorporates the best technology, design, and materials into a first-class experience in our Sprinter conversions. Our development team is comprised of the top engineers, designers, and fabricators, constantly working to make our coaches user-friendly and innovative — making us the best in Sprinter van conversions.</p>
+      <div style="margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <img src="assets/expert-upfitter.png" alt="Mercedes-Benz Sprinter Expert Upfitter" style="height:90px;width:auto;">
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#9a9a9a;font-size:13px;">Certified Mercedes-Benz Sprinter Expert Upfitter</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#0a0a0a;padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;">
+      <button class="hero-grid-btn" data-home-lb="0">
+        <img src="https://bespokeminibus.com/wp-content/uploads/2026/06/045-S34-BROOKS-060226-1-1024x768.jpg" alt="Bespoke Sprinter minibus interior">
+      </button>
+      <button class="hero-grid-btn" data-home-lb="1">
+        <img src="https://bespokeminibus.com/wp-content/uploads/2026/06/026-S34-BROOKS-060226-1-1024x768.jpg" alt="Bespoke Sprinter minibus seating">
+      </button>
+      <button class="hero-grid-btn" data-home-lb="2">
+        <img src="https://bespokeminibus.com/wp-content/uploads/2026/06/057-S34-BROOKS-060226-1024x768.jpg" alt="Bespoke Sprinter minibus detail">
+      </button>
+    </div>
+  </section>
+
+  <section style="background:#000;padding:80px 28px;">
+    <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <h2 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:600;color:#fff;font-size:clamp(24px,3vw,38px);line-height:1.18;margin:0;max-width:760px;flex:1 1 460px;">Our design team will take your inspiration and vision and make it a reality in your Bespoke Sprinter Minibus</h2>
+      <button class="btn-primary lg" data-go="builder">Build a Minibus</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<div id="page-about" class="page-section">
+  <section style="background:#0d0d0d;padding:64px 28px 0;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Bespoke Minibus</div>
+      <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5vw,58px);margin:0;">About Us</h1>
+    </div>
+  </section>
+  <section style="background:#0d0d0d;padding:48px 28px 28px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <h2 style="font-family:'Oswald',sans-serif;text-transform:uppercase;color:#2b97d6;font-style:italic;font-size:22px;letter-spacing:1px;margin:0 0 18px;">Our Story</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:920px;">
+        <div>
+          <p style="font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:16px;line-height:1.9;margin:0 0 16px;">In 1985, the owners of Bespoke Minibus began customizing cars in Southern California. As owners of mobile electronics retail stores in affluent areas such as Beverly Hills, Marina Del Rey and West Los Angeles, it gave them the opportunity to create custom audio, video, interior and exterior creations for celebrities and the most discerning clientele.</p>
+          <p style="font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:16px;line-height:1.9;margin:0;">In 2006, when the Sprinter van was imported and badged by Dodge and Freightliner, the requests to customize them began.</p>
+        </div>
+        <p style="font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:16px;line-height:1.9;margin:0;">After years of experience with Bentley, Rolls Royce and Mercedes, the Sprinter van was a blank canvas ready for a Bespoke makeover. In 2010 Bespoke Coach launched, specializing in custom made-to-order Mercedes-Benz Sprinter van conversions. We've created luxury van conversions ranging from the most premiere mobile office to a family coach with a built-in bed. Our imagination knows no limits and we are consistently working with our clients to push the boundaries of that imagination.</p>
+      </div>
+    </div>
+  </section>
+  <section style="background:#0d0d0d;padding:20px 28px 72px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;">
+        <img src="assets/about-final2.jpg" alt="Bespoke Mercedes-Benz Sprinter van conversion" style="width:100%;height:auto;display:block;">
+        <div>
+          <h2 style="font-family:'Oswald',sans-serif;text-transform:uppercase;color:#2b97d6;font-style:italic;font-size:22px;letter-spacing:1px;margin:0 0 18px;">Our Approach</h2>
+          <p style="font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:16px;line-height:1.9;margin:0;">The Bespoke Minibus team is always striving to create new designs, find new materials, and technologies to incorporate into our van conversions. Using only the finest materials and products, each Bespoke Sprinter is truly one of a kind. With our extensive background in mobile electronics and our development of cutting-edge control systems, Bespoke Minibus incorporates the best technology, design, and materials into a first-class experience in our Sprinter conversions. We discovered a need for Sprinter Van Minibus and Shuttle solutions and decided to embrace the challenge. Our development team is comprised of the top engineers, designers, and fabricators, and we are constantly working to make our coaches user-friendly and innovative.</p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:18px;border-top:1px solid #232323;padding-top:32px;margin-top:48px;flex-wrap:wrap;">
+        <img src="assets/expert-upfitter.png" alt="Mercedes-Benz Expert Upfitter" style="height:74px;width:auto;">
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#fff;font-size:15px;">Certified Mercedes-Benz Sprinter Expert Upfitter</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== GALLERY ===================== -->
+<div id="page-gallery" class="page-section">
+  <section style="background:#0d0d0d;padding:64px 28px 30px;">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Our Work</div>
+      <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5vw,58px);margin:0 0 10px;">Gallery</h1>
+      <p style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:15px;margin:0;">A selection of Bespoke Sprinter minibus and shuttle builds. Click any image to view the full build.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;" id="gallery-filters"></div>
+    </div>
+  </section>
+  <section style="background:#0a0a0a;padding:8px 28px 80px;">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;" id="gallery-grid"></div>
+  </section>
+</div>
+
+<!-- ===================== BUILDER ===================== -->
+<div id="page-builder" class="page-section">
+  <!-- Config view -->
+  <div id="builder-config">
+    <section id="build-top" style="background:#0d0d0d;padding:56px 28px 20px;">
+      <div style="max-width:1280px;margin:0 auto;">
+        <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Configure Your Sprinter</div>
+        <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5vw,58px);margin:0 0 10px;">Build &amp; Price</h1>
+        <p style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:15px;margin:0;max-width:720px;line-height:1.6;">Design your Bespoke Sprinter Minibus step by step. Prices are estimates and exclude the Sprinter base vehicle — submit your build for an exact quote and a free consultation.</p>
+      </div>
+    </section>
+    <section style="background:#0d0d0d;padding:0 28px 16px;position:sticky;top:63px;z-index:40;">
+      <div style="max-width:1280px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid #232323;padding-bottom:14px;" id="step-tabs"></div>
+    </section>
+    <section style="background:#0a0a0a;padding:26px 28px 46px;">
+      <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.7fr 1fr;gap:36px;align-items:start;">
+        <div id="step-content"></div>
+        <aside style="position:sticky;top:150px;background:#111;border:1px solid #242424;" id="builder-sidebar"></aside>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quote view -->
+  <div id="builder-quote" style="display:none;">
+    <section style="background:#0d0d0d;padding:48px 28px 18px;">
+      <div style="max-width:1280px;margin:0 auto;">
+        <button class="edit-build-btn" id="edit-build-btn">‹ Edit My Build</button>
+        <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Your Bespoke Build</div>
+        <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(32px,5vw,54px);margin:0;">Review &amp; Request Your Quote</h1>
+      </div>
+    </section>
+    <section style="background:#0a0a0a;padding:24px 28px 88px;">
+      <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:start;">
+        <div id="quote-left"></div>
+        <div style="position:sticky;top:150px;" id="quote-right"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ===================== FAQ ===================== -->
+<div id="page-faq" class="page-section">
+  <section style="background:#0d0d0d;padding:64px 28px 30px;">
+    <div style="max-width:880px;margin:0 auto;">
+      <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Answers</div>
+      <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5vw,58px);margin:0;">Frequently Asked Questions</h1>
+    </div>
+  </section>
+  <section style="background:#0d0d0d;padding:24px 28px 84px;">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:12px;" id="faq-list"></div>
+  </section>
+</div>
+
+<!-- ===================== CONTACT ===================== -->
+<div id="page-contact" class="page-section">
+  <section style="background:#0d0d0d;padding:64px 28px 30px;">
+    <div style="max-width:1240px;margin:0 auto;">
+      <div style="font-family:'Oswald',sans-serif;letter-spacing:4px;color:#2b97d6;font-size:13px;text-transform:uppercase;margin-bottom:8px;">Get In Touch</div>
+      <h1 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:700;color:#fff;font-size:clamp(34px,5vw,58px);margin:0;">Contact Us</h1>
+    </div>
+  </section>
+  <section style="background:#0d0d0d;padding:30px 28px 80px;">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start;">
+      <div>
+        <div style="display:flex;flex-direction:column;gap:26px;">
+          <a href="mailto:info@bespokeminibus.com" style="display:flex;gap:16px;align-items:flex-start;">
+            <i class="fa-solid fa-envelope" style="color:#2b97d6;font-size:20px;width:26px;margin-top:3px;"></i>
+            <span style="display:flex;flex-direction:column;gap:2px;">
+              <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:12px;color:#8c8c8c;">Email</span>
+              <span style="font-family:'Open Sans',sans-serif;font-size:17px;color:#fff;">info@bespokeminibus.com</span>
+            </span>
+          </a>
+          <a href="tel:18186502987" style="display:flex;gap:16px;align-items:flex-start;">
+            <i class="fa-solid fa-phone" style="color:#2b97d6;font-size:20px;width:26px;margin-top:3px;"></i>
+            <span style="display:flex;flex-direction:column;gap:2px;">
+              <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:12px;color:#8c8c8c;">Phone</span>
+              <span style="font-family:'Open Sans',sans-serif;font-size:17px;color:#fff;">818.650.2987</span>
+            </span>
+          </a>
+          <a href="https://www.google.com/maps/place/7641+Burnet+Ave,+Van+Nuys,+CA+91405" target="_blank" rel="noopener" style="display:flex;gap:16px;align-items:flex-start;">
+            <i class="fa-solid fa-location-dot" style="color:#2b97d6;font-size:20px;width:26px;margin-top:3px;"></i>
+            <span style="display:flex;flex-direction:column;gap:2px;">
+              <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:12px;color:#8c8c8c;">Address</span>
+              <span style="font-family:'Open Sans',sans-serif;font-size:17px;color:#fff;line-height:1.5;">7641 Burnet Ave,<br>Van Nuys, CA 91405</span>
+            </span>
+          </a>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=7641+Burnet+Ave,+Van+Nuys,+CA+91405" target="_blank" rel="noopener" class="directions-card">
+          <span style="display:flex;align-items:center;gap:16px;">
+            <i class="fa-solid fa-map-location-dot" style="color:#2b97d6;font-size:26px;"></i>
+            <span style="display:flex;flex-direction:column;gap:3px;">
+              <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:15px;color:#fff;">Get Directions</span>
+              <span style="font-family:'Open Sans',sans-serif;font-size:13px;color:#9a9a9a;">Open our Van Nuys location in Google Maps</span>
+            </span>
+          </span>
+          <i class="fa-solid fa-arrow-up-right-from-square" style="color:#6f6f6f;font-size:15px;flex:0 0 auto;"></i>
+        </a>
+      </div>
+      <div style="background:#111;border:1px solid #242424;padding:18px 32px 32px;" id="contact-form-wrap"></div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer style="background:#000;border-top:1px solid #1b1b1b;padding:52px 28px 40px;">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:26px;">
+    <img src="https://bespokeminibus.com/wp-content/uploads/2019/04/cropped-EMblem_Logo_W-1.png" alt="Bespoke Minibus" style="height:46px;width:auto;opacity:.95;">
+    <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:8px 4px;justify-content:center;">
+      <button class="footer-link" data-go="home">Home</button>
+      <button class="footer-link" data-go="about">About</button>
+      <button class="footer-link" data-go="gallery">Gallery</button>
+      <button class="footer-link" data-go="builder">Build &amp; Price</button>
+      <button class="footer-link" data-go="faq">FAQ</button>
+      <button class="footer-link" data-go="contact">Contact</button>
+    </nav>
+    <div style="display:flex;gap:22px;align-items:center;">
+      <a href="https://www.facebook.com/BespokeCoach" target="_blank" rel="noopener" aria-label="Facebook" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://twitter.com/BespokeCoach" target="_blank" rel="noopener" aria-label="Twitter" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://vimeo.com/bespokecoach/" target="_blank" rel="noopener" aria-label="Vimeo" class="social-link"><i class="fa-brands fa-vimeo-v"></i></a>
+      <a href="https://www.youtube.com/c/BespokeCoachworks" target="_blank" rel="noopener" aria-label="YouTube" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+      <a href="http://instagram.com/bespokecoach" target="_blank" rel="noopener" aria-label="Instagram" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <div style="font-family:'Open Sans',sans-serif;font-size:12px;color:#6f6f6f;letter-spacing:.5px;">Copyright &copy; 2026 Bespoke Minibus &middot; Van Nuys, CA</div>
+  </div>
+</footer>
+
+<!-- Hidden form so Netlify's scanner finds it at deploy time -->
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="phone">
+  <textarea name="message"></textarea>
+</form>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(6,6,6,0.95);flex-direction:column;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;flex:0 0 auto;">
+    <span id="lb-label" style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#fff;font-size:16px;"></span>
+    <span style="display:flex;align-items:center;gap:20px;">
+      <span id="lb-counter" style="font-family:'Oswald',sans-serif;letter-spacing:1px;color:#9a9a9a;font-size:14px;"></span>
+      <button id="lb-close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;padding:4px;"><i class="fa-solid fa-xmark"></i></button>
+    </span>
+  </div>
+  <div style="flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 18px;min-height:0;">
+    <button class="lb-nav-btn" id="lb-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="" loading="lazy" style="max-width:calc(100% - 150px);max-height:100%;object-fit:contain;display:block;box-shadow:0 10px 40px rgba(0,0,0,0.6);">
+    <button class="lb-nav-btn" id="lb-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+  <div id="lb-thumbs" style="flex:0 0 auto;display:flex;gap:8px;overflow-x:auto;padding:16px 24px 22px;justify-content:center;"></div>
+</div>
+
+<script>
+// ===================== EMAILJS CONFIG =====================
+// After creating your EmailJS account, fill these four values in.
+// Instructions are at the bottom of this script block.
+const EMAILJS_PUBLIC_KEY   = 'TH_Y8jq5XYgQoYB4Z';
+const EMAILJS_SERVICE_ID   = 'service_mehfi84';
+const EMAILJS_TEMPLATE_CUSTOMER  = 'template_t451ktn';
+const EMAILJS_TEMPLATE_BUSINESS  = 'template_6y58zaa';
+const BUSINESS_EMAIL = 'builder@bespokecoach.com'; // the email YOU want to receive copies at
+
+// ===================== DATA =====================
+const PAGES = ['home','about','gallery','builder','faq','contact'];
+const LABELS = { home:'Home', about:'About', gallery:'Gallery', builder:'Build & Price', faq:'FAQ', contact:'Contact' };
+
+const LAYOUTS = [
+  { id:'144C7',  name:'144C7',  seats:'7 + 2 Passengers',  desc:'7 Captain Chairs + Side Counters',  base:39000, img:'assets/layouts/144C7.jpg' },
+  { id:'144N9',  name:'144N9',  seats:'9 + 2 Passengers',  desc:'9 Captain Chairs',                  base:38000, img:'assets/layouts/144N9.jpg' },
+  { id:'170C9',  name:'170C9',  seats:'9 + 2 Passengers',  desc:'9 Captain Chairs + Side Counters',  base:53000, img:'assets/layouts/170C9.jpg' },
+  { id:'170N12', name:'170N12', seats:'12 + 2 Passengers', desc:'12 Captain Chairs',                 base:54000, img:'assets/layouts/170N12.jpg' },
+  { id:'170E16', name:'170E16', seats:'14 + 2 Passengers', desc:'14 Captain Chairs + Table',         base:58000, img:'assets/layouts/170E16.jpg' },
+  { id:'170E17', name:'170E17', seats:'16 + 1 Passengers', desc:'16 Captain Chairs',                 base:62000, img:'assets/layouts/170E17.jpg' }
+];
+
+const GROUPS = {
+  suspension: { id:'suspension', title:'Suspension Package', type:'single', key:'suspension', options:[
+    { id:'std', name:'Standard OEM Suspension', desc:'Included', price:0, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Sus_1-1.jpg' },
+    { id:'air', name:'Premium Suspension', desc:'Air Ride Rear Suspension', price:15000, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Sus_2.jpg' },
+    { id:'ult', name:'Ultimate Suspension', desc:'Air Ride Rear + Front Shock Suspension', price:17500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Sus_3-1.jpg' }
+  ]},
+  vanup: { id:'vanup', title:'Van Upgrades', type:'multi', note:'If your van was not equipped with windows or factory A/C, add these options.', options:[
+    { id:'rearac', name:'Rear Zone Air Conditioner', desc:'w/ Diesel Heater', price:10000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/AC.jpg' },
+    { id:'windows', name:'Passenger Window Package', desc:'w/ 1 Emergency Glass', price:6500, img:'https://bespokeminibus.com/wp-content/uploads/2019/11/Add_WIndows.jpg' }
+  ]},
+  wheels: { id:'wheels', title:'Wheel Options', type:'single', key:'wheels', options:[
+    { id:'std', name:'Standard Wheels', desc:"OEM 16\" Wheels — Included", price:0, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Wheels_OEM16.jpg' },
+    { id:'twotone', name:'Premium Wheels', desc:'OEM 16" Alloy, Powder-Coated Two-Tone', price:3000, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Wheels_2tone.jpg' }
+  ]},
+  grille: { id:'grille', title:'Grille Options', type:'single', key:'grille', options:[
+    { id:'std', name:'Standard Grille', desc:'OEM Plastic Grille — Included', price:0, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Grille_1.jpg' },
+    { id:'premium', name:'Premium Grille', desc:'Painted Body Color w/ Illuminated Star', price:1200, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Grille_2-1.jpg' },
+    { id:'ultimate', name:'Ultimate Grille', desc:'Bespoke Custom Grille w/ Illuminated Star', price:1900, img:'https://bespokeminibus.com/wp-content/uploads/2019/11/Grille_Ultimate.jpg' }
+  ]},
+  exterior: { id:'exterior', title:'Other Exterior Options', type:'multi', options:[
+    { id:'paint', name:'Painted Plastic Panels', desc:'Panels, Bumpers & Door Handles in Body Color', price:4000, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Painted_Panels-1.jpg' },
+    { id:'tint', name:'Ceramic Window Tint', desc:'', price:1500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Ceramic_Tint.jpg' },
+    { id:'slidingdoor', name:'Motorized Sliding Door', desc:'Operated by handle or remote', price:5500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/door.jpg' },
+    { id:'step', name:'Motorized Entrance Step', desc:'', price:2500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/Step-1.jpg' },
+    { id:'battery', name:'Battery Tender', desc:'For Vehicle Charging', price:1500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/battery_tender.jpg' }
+  ]},
+  driver: { id:'driver', title:'Driver Zone Options', type:'multi', options:[
+    { id:'console', name:'Driver Console Refrigerator', desc:'Refrigerator / Freezer', price:900, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/fridge_dz.jpg' },
+    { id:'paxfridge', name:'Passenger Fridge & Trash', desc:'Fridge, Cooler & Trash Can', price:1000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/FRIDGETRASH.jpg' },
+    { id:'alpine', name:'Alpine 7" Radio', desc:'Bluetooth / Apple CarPlay', price:1000, img:'https://bespokeminibus.com/wp-content/uploads/2019/05/alpine.jpg' },
+    { id:'speakers', name:'Front Speakers Upgrade', desc:'', price:500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/f_speaker.jpg' },
+    { id:'frontseats', name:'Front Seats Reupholstered', desc:'', price:2000, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/DZ_seats.jpg' },
+    { id:'headliner', name:'Suede Headliner', desc:'', price:1200, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/headliner.jpg' },
+    { id:'piano', name:'Piano Black Accents', desc:'', price:800, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/panels_DZ.jpg' },
+    { id:'carpet', name:'Mercedes Velour Carpet', desc:'Velour Carpet Flooring', price:900, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/velour_carpet.jpg' },
+    { id:'homelink', name:'HomeLink Garage Opener', desc:'', price:500, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/homelink.jpg' }
+  ]},
+  power: { id:'power', title:'Power Package', type:'single', key:'power', options:[
+    { id:'std', name:'Standard Power', desc:'Individual USB / USB-C Charging Ports', price:400, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/usbs.jpg' },
+    { id:'premium', name:'Premium Power', desc:'[2] 110V Outlets w/ USB-C + 1500W Inverter', price:1500, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/110outlet.jpg' },
+    { id:'ultimate', name:'Ultimate Power', desc:'[8] 110V Outlets w/ USB-C + 1500W Inverter', price:3000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/110outlet.jpg' }
+  ]},
+  internet: { id:'internet', title:'Internet Package', type:'single', key:'internet', options:[
+    { id:'std', name:'Standard Internet', desc:'Use Personal Hotspot — Included', price:0, img:'https://bespokeminibus.com/wp-content/uploads/2019/05/hotspot2.jpg' },
+    { id:'premium', name:'Premium Wi-Fi', desc:'4G/5G LTE Router w/ Roof Antenna', price:1000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/router.jpg' },
+    { id:'ultimate', name:'Starlink Prep', desc:'Starlink Install Prep (Customer Supplies Unit)', price:1000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/starlink.jpg' }
+  ]},
+  entertainment: { id:'entertainment', title:'Entertainment Options', type:'multi', options:[
+    { id:'rear', name:'Rear Entertainment Package', desc:'32" Samsung Monitor, Apple TV, 4 Speakers & Amp, HDMI, 400W Inverter', price:5000, img:'https://bespokeminibus.com/wp-content/uploads/2019/04/FrontTV_Option2-1.jpg' },
+    { id:'sub', name:'Sound System Upgrade', desc:'150W x4 Amp + 12" 800W Subwoofer', price:3000, img:'https://bespokeminibus.com/wp-content/uploads/2026/06/sub.jpg' }
+  ]}
+};
+
+const STEPS = [
+  { n:1, label:'Layout',        groupIds:['__layout'] },
+  { n:2, label:'Suspension',    groupIds:['suspension','vanup'] },
+  { n:3, label:'Exterior',      groupIds:['wheels','grille','exterior'] },
+  { n:4, label:'Driver Zone',   groupIds:['driver'] },
+  { n:5, label:'Power & Wi-Fi', groupIds:['power','internet'] },
+  { n:6, label:'Entertainment', groupIds:['entertainment'] }
+];
+const STEP_TITLES = { 1:'Choose Your Layout', 2:'Suspension & Comfort', 3:'Exterior', 4:'Driver Zone', 5:'Power & Connectivity', 6:'Entertainment' };
+
+const STANDARD_FEATURES = [
+  'All sub-structure flooring & framing made from aluminum',
+  'All-aluminum airline channel system for seat mounting',
+  'Automotive-grade fuse panel',
+  'Commercial-grade simulated wood PVC flooring',
+  'Hand-crafted beveled-edge counter tops (where applicable)',
+  'Stainless steel cup holders in counters',
+  'Individual double USB charging outlets',
+  'Bespoke design 19" wide highback captain chairs',
+  'Captain chairs with 3-point seatbelts, adjustable shoulder height & manual recline',
+  'All captain chairs upholstered in quilted UltraLeather',
+  'All seating crash-tested & certified',
+  'Widest aisles in the industry',
+  'Largest cargo area in the industry',
+  'Largest seat-to-seat spacing in the industry',
+  'Designed & made in the U.S.A.'
+];
+
+const GALLERY = [
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/COVER-1024x768-landscape.jpg', label:'S34', key:'S34', tags:['S34'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/Bespoke-Coach-Van-2-7.22-14-1024x683-landscape.jpg', label:'S30', key:'S30', tags:['S30'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/010-Bespoke-Coach-Van-1-03202024-1-1024x768-landscape.jpg', label:'170C9 · S29', key:'S29', tags:['170C9','S29'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/Cover-1024x683-landscape.jpg', label:'S21', key:'S21', tags:['S21'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/S13_04-1024x630-landscape.jpg', label:'144C7 · S13', key:'S13', tags:['144C7','S13'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/S12_03-1024x681-landscape.jpg', label:'170C9 · S12', key:'S12', tags:['170C9','S12'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/S4_M_18-1024x683-landscape.jpg', label:'170M9 · S10', key:'S10', tags:['170M9','S10'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/MB132_04-1024x683-landscape.jpg', label:'170E13 · S5', key:'S5', tags:['170E13','S5'] },
+  { img:'https://bespokeminibus.com/wp-content/uploads/bb-plugin/cache/S4_04-1024x683-landscape.jpg', label:'170E15 · S4', key:'S4', tags:['170E15','S4'] }
+];
+
+const BUILD_PHOTOS = {
+  home: ['045-S34-BROOKS-060226-1','026-S34-BROOKS-060226-1','057-S34-BROOKS-060226']
+    .map(f => 'https://bespokeminibus.com/wp-content/uploads/2026/06/' + f + '-1024x768.jpg'),
+  S34: ['009-S34-BROOKS-060226-scaled.jpg','002-S34-BROOKS-060226-1-scaled.jpg','004-S34-BROOKS-060226-scaled.jpg','006-S34-BROOKS-060226-scaled.jpg','007-S34-BROOKS-060226-scaled.jpg','010-S34-BROOKS-060226-scaled.jpg','012-S34-BROOKS-060226-scaled.jpg','013-S34-BROOKS-060226-scaled.jpg','014-S34-BROOKS-060226-scaled.jpg','015-S34-BROOKS-060226-scaled.jpg','016-S34-BROOKS-060226-scaled.jpg','018-S34-BROOKS-060226-scaled.jpg','021-S34-BROOKS-060226-scaled.jpg','025-S34-BROOKS-060226-scaled.jpg','026-S34-BROOKS-060226-scaled.jpg','027-S34-BROOKS-060226-scaled.jpg','030-S34-BROOKS-060226-scaled.jpg','031-S34-BROOKS-060226-scaled.jpg','032-S34-BROOKS-060226-scaled.jpg','035-S34-BROOKS-060226-scaled.jpg','037-S34-BROOKS-060226-scaled.jpg','042-S34-BROOKS-060226-scaled.jpg','043-S34-BROOKS-060226-scaled.jpg','045-S34-BROOKS-060226-scaled.jpg','046-S34-BROOKS-060226-scaled.jpg','047-S34-BROOKS-060226-scaled.jpg','049-S34-BROOKS-060226-scaled.jpg','052-S34-BROOKS-060226-scaled.jpg','056-S34-BROOKS-060226-scaled.jpg']
+    .map(f => 'https://bespokeminibus.com/wp-content/uploads/2026/06/' + f),
+  S13: Array.from({length:15},(_,i)=>'https://bespokeminibus.com/wp-content/uploads/2019/06/S13_'+String(i+1).padStart(2,'0')+'.jpg'),
+  S12: Array.from({length:11},(_,i)=>'https://bespokeminibus.com/wp-content/uploads/2019/04/S12_'+String(i+1).padStart(2,'0')+'.jpg'),
+  S30: ['14','11','10','13','12','6','3','1','2','4','5','7','8','9']
+    .map(n => 'https://bespokeminibus.com/wp-content/uploads/2025/08/Bespoke-Coach-Van-2-7.22-' + n + '-scaled.jpg'),
+  S29: ['007','010','009','001','008','036','037','034','035','004','029','011','012','013','014','016','018','040','041','019','021','006','022','023','030','024','025','026','027','028','032','038','039','043','003']
+    .map(n => 'https://bespokeminibus.com/wp-content/uploads/2025/07/' + n + '-Bespoke-Coach-Van-1-03202024' + (n==='041'?'-1':'') + '-scaled.jpg'),
+  S21: [40,39,41,37,38,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
+    .map(n => 'https://bespokeminibus.com/wp-content/uploads/2025/08/BC-1.24-' + n + '-scaled.jpg'),
+  S10: Array.from({length:18},(_,i)=>'https://bespokeminibus.com/wp-content/uploads/2019/04/S4_M_'+String(i+1).padStart(2,'0')+'.jpg'),
+  S5: Array.from({length:16},(_,i)=>'https://bespokeminibus.com/wp-content/uploads/2019/04/MB132_'+String(i+1).padStart(2,'0')+'.jpg'),
+  S4: ['S4_01','S4_02','S4_03','S4_04','S4_05','S4_06','S4_07','S4_08','S4_09_A','S4_10','S4_11','S4_12','S4_13','S4_14','S4_15','S4_16_A-1','S4_17_A-1','S4_18','S4_19','S4_20','S4_21','S4_22']
+    .map(f => 'https://bespokeminibus.com/wp-content/uploads/2019/04/' + f + '.jpg')
+};
+
+const FILTERS = ['all','S34','S30','170C9','S21','144C7','170M9','170E13','170E15'];
+
+const FAQ_DATA = [
+  { q:'How much does a Bespoke Minibus cost?', a:'A Bespoke Sprinter Minibus build ranges in price from $68,969 to $89,399 depending on your chosen layout and options. Please contact us for a free consultation.' },
+  { q:'How long does it take to build?', a:'Creating a Bespoke Sprinter Minibus shuttle takes between 3 and 6 weeks depending on your layout and the options you select.' },
+  { q:'How do I arrange the purchase of a Sprinter base model?', a:'We have a wonderful relationship with our local Mercedes-Benz Sprinter dealers. They extend us a large discount that we gladly pass on to our customers, making the purchase process quick and easy.' },
+  { q:'What warranty comes with a Bespoke Minibus?', a:'Bespoke Sprinter Minibus builds are backed by a 1 year / 12,000 mile warranty.' },
+  { q:'Are you a certified Mercedes-Benz upfitter?', a:'Yes. Bespoke Coach is a certified Mercedes-Benz Sprinter Expert Upfitter.' },
+  { q:'How do I get started?', a:'Configure your build with our online Build & Price tool, or contact us at 818.650.2987 for a free consultation.' }
+];
+
+// ===================== STATE =====================
+const state = {
+  page: 'home',
+  galFilter: 'all',
+  openFaq: 0,
+  builderStep: 1,
+  layout: '144C7',
+  single: { suspension:'std', wheels:'std', grille:'std', power:'std', internet:'std' },
+  multi: {},
+  builderView: 'config',
+  quoteSent: false,
+  contactSent: false,
+  lbPhotos: [],
+  lbIndex: 0,
+  lbLabel: ''
+};
+
+// ===================== HELPERS =====================
+function fmt(n) { return '$' + Number(n).toLocaleString('en-US'); }
+
+function photosFor(key) {
+  const set = BUILD_PHOTOS[key];
+  if (set && set.length) return set;
+  const g = GALLERY.find(x => x.key === key);
+  return g ? [g.img] : [];
+}
+
+function calcTotal() {
+  const layout = LAYOUTS.find(l => l.id === state.layout) || LAYOUTS[0];
+  let total = layout.base;
+  ['suspension','wheels','grille','power','internet'].forEach(key => {
+    const g = GROUPS[key];
+    const opt = g.options.find(o => o.id === state.single[key]);
+    if (opt && opt.price > 0) total += opt.price;
+  });
+  ['vanup','exterior','driver','entertainment'].forEach(gid => {
+    GROUPS[gid].options.forEach(o => { if (state.multi[o.id]) total += o.price; });
+  });
+  return total;
+}
+
+function buildSummaryItems() {
+  const layout = LAYOUTS.find(l => l.id === state.layout) || LAYOUTS[0];
+  const items = [{ name: layout.name + ' Layout', priceFmt: fmt(layout.base) }];
+  ['suspension','wheels','grille','power','internet'].forEach(key => {
+    const g = GROUPS[key];
+    const opt = g.options.find(o => o.id === state.single[key]);
+    if (opt && opt.price > 0) items.push({ name: opt.name, priceFmt: '+ ' + fmt(opt.price) });
+  });
+  ['vanup','exterior','driver','entertainment'].forEach(gid => {
+    GROUPS[gid].options.forEach(o => {
+      if (state.multi[o.id]) items.push({ name: o.name, priceFmt: '+ ' + fmt(o.price) });
+    });
+  });
+  return items;
+}
+
+// ===================== ROUTING =====================
+function go(page) {
+  state.page = page;
+  try { history.replaceState(null, '', '#' + page); } catch(e) {}
+  try { window.scrollTo(0, 0); } catch(e) {}
+  render();
+}
+
+window.addEventListener('hashchange', () => {
+  const h = (location.hash || '').replace('#','');
+  if (h && PAGES.includes(h)) { state.page = h; render(); }
+});
+
+// ===================== LIGHTBOX =====================
+function openLightbox(photos, idx, label) {
+  state.lbPhotos = photos;
+  state.lbIndex = idx || 0;
+  state.lbLabel = label || '';
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  renderLightbox();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+  state.lbPhotos = [];
+}
+
+function lbStep(d) {
+  const n = state.lbPhotos.length || 1;
+  state.lbIndex = (state.lbIndex + d + n) % n;
+  renderLightbox();
+}
+
+function renderLightbox() {
+  const photos = state.lbPhotos;
+  const idx = state.lbIndex;
+  document.getElementById('lb-label').textContent = state.lbLabel;
+  document.getElementById('lb-counter').textContent = (idx + 1) + ' / ' + photos.length;
+  document.getElementById('lb-img').src = photos[idx] || '';
+  document.getElementById('lb-img').alt = state.lbLabel;
+  const thumbsEl = document.getElementById('lb-thumbs');
+  thumbsEl.innerHTML = photos.map((src, i) =>
+    `<img src="${src}" class="lb-thumb${i === idx ? ' active' : ''}" data-lb-thumb="${i}" loading="lazy">`
+  ).join('');
+}
+
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
+document.getElementById('lb-thumbs').addEventListener('click', e => {
+  e.stopPropagation();
+  const t = e.target.closest('[data-lb-thumb]');
+  if (t) { state.lbIndex = +t.dataset.lbThumb; renderLightbox(); }
+});
+
+window.addEventListener('keydown', e => {
+  if (!state.lbPhotos.length) return;
+  if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowRight') lbStep(1);
+  else if (e.key === 'ArrowLeft') lbStep(-1);
+});
+
+// ===================== GALLERY RENDER =====================
+function renderGallery() {
+  // Filters
+  const filtersEl = document.getElementById('gallery-filters');
+  filtersEl.innerHTML = FILTERS.map(f =>
+    `<button class="filter-chip${state.galFilter === f ? ' active' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f}</button>`
+  ).join('');
+
+  // Grid
+  const visible = GALLERY.filter(g => state.galFilter === 'all' || g.tags.includes(state.galFilter));
+  const gridEl = document.getElementById('gallery-grid');
+  gridEl.innerHTML = visible.map(g => `
+    <button class="gallery-item" data-gallery-key="${g.key}">
+      <img src="${g.img}" alt="Bespoke Sprinter minibus build ${g.label}" loading="lazy">
+      <span style="position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);padding:6px 10px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:11px;color:#fff;">
+        <i class="fa-solid fa-images" style="font-size:11px;color:#2b97d6;"></i>View Photos
+      </span>
+      <span style="position:absolute;left:0;bottom:0;right:0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,0.85));font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;color:#fff;text-align:left;">${g.label}</span>
+    </button>
+  `).join('');
+}
+
+// Gallery events (delegated)
+document.getElementById('gallery-filters').addEventListener('click', e => {
+  const chip = e.target.closest('[data-filter]');
+  if (chip) { state.galFilter = chip.dataset.filter; renderGallery(); }
+});
+document.getElementById('gallery-grid').addEventListener('click', e => {
+  const btn = e.target.closest('[data-gallery-key]');
+  if (btn) {
+    const key = btn.dataset.galleryKey;
+    const photos = photosFor(key);
+    const g = GALLERY.find(x => x.key === key);
+    openLightbox(photos, 0, g ? g.label : key);
+  }
+});
+
+// ===================== FAQ RENDER =====================
+function renderFaq() {
+  const el = document.getElementById('faq-list');
+  el.innerHTML = FAQ_DATA.map((f, i) => `
+    <div style="border:1px solid #232323;background:#0a0a0a;">
+      <button class="faq-toggle" data-faq="${i}">
+        <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:16px;color:#fff;">${f.q}</span>
+        <span style="font-family:'Oswald',sans-serif;font-size:24px;color:#2b97d6;line-height:1;flex:0 0 auto;">${state.openFaq === i ? '–' : '+'}</span>
+      </button>
+      ${state.openFaq === i ? `<div style="padding:0 22px 22px;font-family:'Open Sans',sans-serif;color:#bdbdbd;font-size:15px;line-height:1.8;">${f.a}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+document.getElementById('faq-list').addEventListener('click', e => {
+  const btn = e.target.closest('[data-faq]');
+  if (btn) {
+    const i = +btn.dataset.faq;
+    state.openFaq = state.openFaq === i ? -1 : i;
+    renderFaq();
+  }
+});
+
+// ===================== CONTACT RENDER =====================
+function renderContact() {
+  const wrap = document.getElementById('contact-form-wrap');
+  if (state.contactSent) {
+    wrap.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 10px;">
+        <i class="fa-solid fa-circle-check" style="font-size:46px;color:#2b97d6;margin-bottom:18px;"></i>
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:22px;color:#fff;margin-bottom:10px;">Thank You</div>
+        <p style="font-family:'Open Sans',sans-serif;color:#bdbdbd;font-size:15px;line-height:1.7;margin:0;">Message sent! We'll be in touch shortly to start your Bespoke build.</p>
+      </div>`;
+  } else {
+    wrap.innerHTML = `
+      <form id="contact-form" style="display:flex;flex-direction:column;gap:16px;">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><input name="bot-field"></p>
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:16px;color:#fff;margin-bottom:4px;">Send Us a Message</div>
+        <input name="name" placeholder="Name" required class="form-input">
+        <input name="email" type="email" placeholder="Email" required class="form-input">
+        <input name="phone" placeholder="Phone" class="form-input">
+        <textarea name="message" placeholder="Tell us about your project" rows="5" class="form-input" style="resize:vertical;"></textarea>
+        <button type="submit" class="btn-primary" style="padding:15px;font-size:15px;">Send Message</button>
+      </form>`;
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      data.append('form-name', 'contact');
+      fetch('/', { method: 'POST', body: data })
+        .catch(() => {}) // on localhost this will fail — that's fine, it works on Netlify
+        .finally(() => { state.contactSent = true; renderContact(); });
+    });
+  }
+}
+
+// ===================== BUILDER RENDER =====================
+function renderBuilderSidebar() {
+  const layout = LAYOUTS.find(l => l.id === state.layout) || LAYOUTS[0];
+  const items = buildSummaryItems();
+  const total = calcTotal();
+  return `
+    <div style="padding:22px 22px 0;">
+      <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#8c8c8c;font-size:12px;margin-bottom:6px;">Your Build</div>
+      <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;color:#fff;font-size:22px;letter-spacing:1px;">${layout.name}</div>
+      <div style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:13px;margin-top:3px;">${layout.seats} · ${layout.desc}</div>
+    </div>
+    <div style="padding:14px 22px;margin-top:14px;border-top:1px solid #242424;max-height:240px;overflow-y:auto;">
+      ${items.map(s => `
+        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:9px;font-family:'Open Sans',sans-serif;font-size:13px;color:#bdbdbd;">
+          <span style="line-height:1.4;">${s.name}</span>
+          <span style="color:#fff;white-space:nowrap;">${s.priceFmt}</span>
+        </div>`).join('')}
+    </div>
+    <div style="padding:18px 22px;border-top:1px solid #242424;display:flex;justify-content:space-between;align-items:baseline;">
+      <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:#fff;font-size:15px;">Estimated Total</span>
+      <span style="font-family:'Oswald',sans-serif;font-size:28px;color:#2b97d6;">${fmt(total)}</span>
+    </div>
+    <div style="padding:0 22px 22px;">
+      <button class="quote-sidebar-btn" id="go-quote-btn">Get My Quote</button>
+      <p style="font-family:'Open Sans',sans-serif;color:#6f6f6f;font-size:11px;line-height:1.6;margin:12px 0 0;text-align:center;">Estimate excludes the Sprinter base vehicle. Final pricing confirmed at your consultation.</p>
+    </div>`;
+}
+
+function renderOptionCard(o, sel, aspect) {
+  const border = sel ? '2px solid #2b97d6' : '1px solid #262626';
+  const badgeOpacity = sel ? '1' : '0';
+  return `
+    <button class="option-card${sel ? ' selected' : ''}" data-opt-id="${o.id}" data-opt-key="${o.key || ''}" style="border:${border};">
+      <span style="position:relative;display:block;width:100%;aspect-ratio:${aspect || '4/3'};overflow:hidden;background:#111;">
+        <img src="${o.img}" alt="${o.name}" loading="lazy" style="width:100%;height:100%;object-fit:${aspect === '500/234' ? 'cover' : 'contain'};display:block;">
+        <span style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2b97d6;box-shadow:0 1px 4px rgba(0,0,0,.4);opacity:${badgeOpacity};pointer-events:none;">
+          <i class="fa-solid fa-check" style="font-size:12px;color:#fff;"></i>
+        </span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:3px;padding:12px 13px 14px;">
+        <span style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:13.5px;color:#eaeaea;line-height:1.25;">${o.name}</span>
+        <span style="font-family:'Open Sans',sans-serif;font-size:12px;color:#8f8f8f;line-height:1.4;min-height:16px;">${o.desc || ''}</span>
+        <span style="font-family:'Oswald',sans-serif;font-size:14px;color:#2b97d6;letter-spacing:.5px;margin-top:2px;">${o.price === 0 ? 'Included' : '+ ' + fmt(o.price)}</span>
+      </span>
+    </button>`;
+}
+
+function renderBuilderStep() {
+  const stepNum = state.builderStep;
+  const curStep = STEPS.find(s => s.n === stepNum) || STEPS[0];
+  const isFirst = stepNum === 1;
+  const isLast = stepNum === STEPS.length;
+
+  let groupsHtml = '';
+  curStep.groupIds.forEach(gid => {
+    if (gid === '__layout') {
+      groupsHtml += `
+        <div style="margin-bottom:36px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px;">
+            <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;color:#fff;font-size:17px;">Minibus Layouts</span>
+            <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:#7d7d7d;font-size:11px;white-space:nowrap;">Choose One</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:8px;" data-group="__layout">
+            ${LAYOUTS.map(l => {
+              const sel = state.layout === l.id;
+              const o = { id: l.id, name: l.name, desc: l.seats + ' · ' + l.desc, img: l.img, price: l.base };
+              return renderOptionCard(o, sel, '500/234');
+            }).join('')}
+          </div>
+        </div>`;
+    } else {
+      const g = GROUPS[gid];
+      const isSingle = g.type === 'single';
+      groupsHtml += `
+        <div style="margin-bottom:36px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px;">
+            <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;color:#fff;font-size:17px;">${g.title}</span>
+            <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:#7d7d7d;font-size:11px;white-space:nowrap;">${isSingle ? 'Choose One' : 'Select Any'}</span>
+          </div>
+          ${g.note ? `<p style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:13px;line-height:1.6;margin:0 0 14px;max-width:640px;">${g.note}</p>` : ''}
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:8px;" data-group="${gid}">
+            ${g.options.map(o => {
+              const sel = isSingle ? (state.single[g.key] === o.id) : !!state.multi[o.id];
+              return renderOptionCard({ ...o, key: g.key }, sel, '4/3');
+            }).join('')}
+          </div>
+        </div>`;
+    }
+  });
+
+  const content = document.getElementById('step-content');
+  content.innerHTML = `
+    <div style="font-family:'Oswald',sans-serif;letter-spacing:2px;color:#2b97d6;font-size:12px;text-transform:uppercase;margin-bottom:6px;">Step ${stepNum} of ${STEPS.length}</div>
+    <h2 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;font-weight:600;color:#fff;font-size:clamp(22px,2.6vw,32px);margin:0 0 26px;">${STEP_TITLES[stepNum]}</h2>
+    ${groupsHtml}
+    <div style="display:flex;justify-content:space-between;gap:12px;margin-top:8px;border-top:1px solid #1f1f1f;padding-top:22px;">
+      <button class="builder-btn-prev${isFirst ? ' disabled' : ''}" id="prev-step-btn">‹ Back</button>
+      <button class="builder-btn-next" id="next-step-btn">${isLast ? 'Review & Quote ›' : 'Next ›'}</button>
+    </div>`;
+
+  document.getElementById('prev-step-btn').addEventListener('click', () => {
+    if (state.builderStep > 1) { state.builderStep--; renderBuilder(); scrollToBuildTop(); }
+  });
+  document.getElementById('next-step-btn').addEventListener('click', () => {
+    if (state.builderStep < STEPS.length) { state.builderStep++; renderBuilder(); scrollToBuildTop(); }
+    else { showQuoteView(); }
+  });
+
+  // Option card click events
+  content.querySelectorAll('[data-group]').forEach(group => {
+    const gid = group.dataset.group;
+    group.addEventListener('click', e => {
+      const card = e.target.closest('[data-opt-id]');
+      if (!card) return;
+      const optId = card.dataset.optId;
+      if (gid === '__layout') {
+        state.layout = optId;
+      } else {
+        const g = GROUPS[gid];
+        if (g.type === 'single') {
+          state.single = { ...state.single, [g.key]: optId };
+        } else {
+          state.multi = { ...state.multi, [optId]: !state.multi[optId] };
+        }
+      }
+      renderBuilder();
+    });
+  });
+}
+
+function renderBuilderTabs() {
+  const tabs = document.getElementById('step-tabs');
+  tabs.innerHTML = STEPS.map(s => {
+    const active = s.n === state.builderStep;
+    return `<button class="step-tab${active ? ' active' : ''}" data-step="${s.n}"><span class="step-num">${s.n}</span><span>${s.label}</span></button>`;
+  }).join('');
+  tabs.querySelectorAll('[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.builderStep = +btn.dataset.step;
+      renderBuilder();
+      scrollToBuildTop();
+    });
+  });
+}
+
+function scrollToBuildTop() {
+  try {
+    const el = document.getElementById('build-top');
+    if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 72; window.scrollTo({ top: y, behavior: 'smooth' }); }
+  } catch(e) {}
+}
+
+function renderBuilder() {
+  renderBuilderTabs();
+  renderBuilderStep();
+  const sidebar = document.getElementById('builder-sidebar');
+  sidebar.innerHTML = renderBuilderSidebar();
+  document.getElementById('go-quote-btn').addEventListener('click', showQuoteView);
+}
+
+// ===================== QUOTE VIEW =====================
+function showQuoteView() {
+  document.getElementById('builder-config').style.display = 'none';
+  document.getElementById('builder-quote').style.display = 'block';
+  try { window.scrollTo(0,0); } catch(e) {}
+  renderQuote();
+}
+
+function showConfigView() {
+  document.getElementById('builder-config').style.display = 'block';
+  document.getElementById('builder-quote').style.display = 'none';
+  try { window.scrollTo(0,0); } catch(e) {}
+}
+
+function renderQuote() {
+  const layout = LAYOUTS.find(l => l.id === state.layout) || LAYOUTS[0];
+  const items = buildSummaryItems();
+  const total = calcTotal();
+
+  // Left column: build summary + standard features
+  document.getElementById('quote-left').innerHTML = `
+    <div style="background:#111;border:1px solid #242424;">
+      <div style="padding:22px 24px 0;">
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;color:#8c8c8c;font-size:12px;margin-bottom:6px;">Your Build</div>
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;color:#fff;font-size:24px;letter-spacing:1px;">${layout.name}</div>
+        <div style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:13px;margin-top:3px;">${layout.seats} · ${layout.desc}</div>
+      </div>
+      <div style="padding:16px 24px;margin-top:14px;border-top:1px solid #242424;">
+        ${items.map(s => `
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:10px;font-family:'Open Sans',sans-serif;font-size:14px;color:#bdbdbd;">
+            <span style="line-height:1.4;">${s.name}</span>
+            <span style="color:#fff;white-space:nowrap;">${s.priceFmt}</span>
+          </div>`).join('')}
+      </div>
+      <div style="padding:18px 24px;border-top:1px solid #242424;display:flex;justify-content:space-between;align-items:baseline;">
+        <span style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:#fff;font-size:16px;">Estimated Total</span>
+        <span style="font-family:'Oswald',sans-serif;font-size:30px;color:#2b97d6;">${fmt(total)}</span>
+      </div>
+    </div>
+    <h2 style="font-family:'Oswald',sans-serif;font-style:italic;text-transform:uppercase;color:#2b97d6;font-size:20px;letter-spacing:1px;margin:38px 0 8px;">Standard Features</h2>
+    <p style="font-family:'Open Sans',sans-serif;color:#9a9a9a;font-size:14px;margin:0 0 18px;">Included on every Bespoke Sprinter Minibus.</p>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:11px;">
+      ${STANDARD_FEATURES.map(f => `
+        <li style="display:flex;gap:11px;align-items:flex-start;font-family:'Open Sans',sans-serif;color:#c4c4c4;font-size:13.5px;line-height:1.5;">
+          <i class="fa-solid fa-check" style="color:#2b97d6;font-size:12px;margin-top:4px;flex:0 0 auto;"></i>
+          <span>${f}</span>
+        </li>`).join('')}
+    </ul>`;
+
+  renderQuoteForm(layout, total);
+  document.getElementById('edit-build-btn').onclick = showConfigView;
+}
+
+// ===================== PDF GENERATION =====================
+async function loadImageAsBase64(url) {
+  try {
+    const resp = await fetch(url);
+    const blob = await resp.blob();
+    return await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(blob);
+    });
+  } catch(e) {
+    return null;
+  }
+}
+
+async function generateBuildPDF(customerName, customerEmail, customerPhone, layout, items, total) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+  const blue = [43, 151, 214];
+  const dark = [10, 10, 10];
+  const grey = [150, 150, 150];
+  const white = [255, 255, 255];
+  const W = doc.internal.pageSize.getWidth();
+
+  // Header bar
+  doc.setFillColor(...dark);
+  doc.rect(0, 0, W, 80, 'F');
+  doc.setFillColor(...blue);
+  doc.rect(0, 80, W, 3, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(...white);
+  doc.text('BESPOKE MINIBUS', 40, 38);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.setTextColor(...grey);
+  doc.text('SPRINTER SHUTTLE CONVERSIONS', 40, 56);
+
+  doc.setFontSize(9);
+  doc.text('bespokeminibus.com  ·  818.650.2987  ·  info@bespokeminibus.com', W - 40, 48, { align: 'right' });
+
+  // Title
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor(...dark);
+  doc.text('Build Summary', 40, 118);
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...grey);
+  doc.text('Prepared for: ' + customerName, 40, 136);
+  doc.text(new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }), W - 40, 136, { align: 'right' });
+
+  // Divider
+  doc.setDrawColor(...blue);
+  doc.setLineWidth(0.5);
+  doc.line(40, 148, W - 40, 148);
+
+  // Layout callout box — with layout diagram image on the left
+  const layoutImgData = await loadImageAsBase64(layout.img);
+  const boxH = 80;
+  doc.setFillColor(240, 246, 252);
+  doc.roundedRect(40, 160, W - 80, boxH, 4, 4, 'F');
+  const imgW = 120, imgH = 62;
+  if (layoutImgData) {
+    doc.addImage(layoutImgData, 'JPEG', 52, 169, imgW, imgH);
+  }
+  const textX = layoutImgData ? 52 + imgW + 14 : 56;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(14);
+  doc.setTextColor(...blue);
+  doc.text(layout.name + ' Layout', textX, 192);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.setTextColor(80, 80, 80);
+  doc.text(layout.seats + '  ·  ' + layout.desc, textX, 210);
+
+  // Selected options table
+  let y = 270;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(...dark);
+  doc.text('Selected Options', 40, y);
+  y += 14;
+
+  doc.setDrawColor(220, 220, 220);
+  doc.setLineWidth(0.5);
+  doc.line(40, y, W - 40, y);
+  y += 14;
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  items.forEach((item, i) => {
+    if (i % 2 === 0) {
+      doc.setFillColor(248, 248, 248);
+      doc.rect(40, y - 10, W - 80, 20, 'F');
+    }
+    doc.setTextColor(...dark);
+    doc.text(item.name, 52, y + 4);
+    doc.setTextColor(...blue);
+    doc.text(item.priceFmt, W - 52, y + 4, { align: 'right' });
+    y += 22;
+  });
+
+  // Total row
+  y += 6;
+  doc.setFillColor(...blue);
+  doc.rect(40, y - 10, W - 80, 28, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.setTextColor(...white);
+  doc.text('ESTIMATED TOTAL', 52, y + 8);
+  doc.setFontSize(14);
+  doc.text(fmt(total), W - 52, y + 8, { align: 'right' });
+
+  // Disclaimer
+  y += 44;
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(8.5);
+  doc.setTextColor(...grey);
+  doc.text('Estimate excludes the Sprinter base vehicle. Final pricing confirmed at your free consultation.', 40, y);
+  doc.text('Bespoke Sprinter Minibus builds are backed by a 1 year / 12,000 mile warranty.', 40, y + 14);
+
+  // Footer
+  const pageH = doc.internal.pageSize.getHeight();
+  doc.setFillColor(...dark);
+  doc.rect(0, pageH - 44, W, 44, 'F');
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(...grey);
+  doc.text('7641 Burnet Ave, Van Nuys, CA 91405  ·  818.650.2987  ·  info@bespokeminibus.com', W / 2, pageH - 18, { align: 'center' });
+
+  return doc;
+}
+
+// ===================== EMAIL SENDING =====================
+function buildEmailBody(customerName, layout, items, total, customerPhone) {
+  const lines = items.map(i => `  ${i.name}: ${i.priceFmt}`).join('\n');
+  return [
+    `Customer: ${customerName}`,
+    `Phone: ${customerPhone || 'Not provided'}`,
+    ``,
+    `Layout: ${layout.name} — ${layout.seats}`,
+    ``,
+    `Selected Options:`,
+    lines,
+    ``,
+    `Estimated Total: ${fmt(total)}`,
+    ``,
+    `(Excludes Sprinter base vehicle. Final pricing confirmed at consultation.)`
+  ].join('\n');
+}
+
+async function sendBuildEmails(customerName, customerEmail, customerPhone, layout, items, total) {
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    console.warn('EmailJS not configured yet — skipping email send.');
+    return;
+  }
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  const body = buildEmailBody(customerName, layout, items, total, customerPhone);
+
+  // Email to customer
+  await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUSTOMER, {
+    to_name:    customerName,
+    to_email:   customerEmail,
+    layout:     layout.name + ' — ' + layout.seats,
+    build_body: body,
+    total:      fmt(total)
+  }).catch(err => console.error('Customer email failed:', err));
+
+  // Email to business
+  await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_BUSINESS, {
+    to_email:       BUSINESS_EMAIL,
+    customer_name:  customerName,
+    customer_email: customerEmail,
+    customer_phone: customerPhone || 'Not provided',
+    layout:         layout.name + ' — ' + layout.seats,
+    build_body:     body,
+    total:          fmt(total)
+  }).catch(err => console.error('Business email failed:', err));
+}
+
+function renderQuoteForm(layout, total) {
+  const right = document.getElementById('quote-right');
+  right.innerHTML = `<div style="background:#111;border:1px solid #242424;padding:30px;" id="quote-form-inner"></div>`;
+  const inner = document.getElementById('quote-form-inner');
+
+  if (state.quoteSent) {
+    inner.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 10px;">
+        <i class="fa-solid fa-circle-check" style="font-size:46px;color:#2b97d6;margin-bottom:18px;"></i>
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:22px;color:#fff;margin-bottom:10px;">Build Received</div>
+        <p style="font-family:'Open Sans',sans-serif;color:#bdbdbd;font-size:15px;line-height:1.7;margin:0 0 22px;">Thank you — your custom build and estimate are ready to send. Our team will reach out shortly to finalize your Bespoke Sprinter.</p>
+        <button class="build-another-btn" id="build-another-btn">Build Another</button>
+      </div>`;
+    document.getElementById('build-another-btn').addEventListener('click', () => {
+      state.quoteSent = false;
+      state.layout = '144C7';
+      state.single = { suspension:'std', wheels:'std', grille:'std', power:'std', internet:'std' };
+      state.multi = {};
+      state.builderStep = 1;
+      showConfigView();
+      renderBuilder();
+    });
+  } else {
+    inner.innerHTML = `
+      <form id="quote-form" style="display:flex;flex-direction:column;gap:14px;">
+        <div style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:18px;color:#fff;">Request Your Quote</div>
+        <div style="background:#0a0a0a;border:1px solid #242424;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
+          <span style="font-family:'Open Sans',sans-serif;font-size:13px;color:#9a9a9a;">${layout ? layout.name : ''} build estimate</span>
+          <span style="font-family:'Oswald',sans-serif;font-size:18px;color:#2b97d6;white-space:nowrap;">${fmt(total)}</span>
+        </div>
+        <input name="name" placeholder="Full Name" required class="form-input">
+        <input name="phone" placeholder="Phone" class="form-input">
+        <input name="email" type="email" placeholder="Email" required class="form-input">
+        <label style="display:flex;gap:10px;align-items:flex-start;font-family:'Open Sans',sans-serif;font-size:12px;color:#9a9a9a;line-height:1.5;cursor:pointer;">
+          <input type="checkbox" required style="margin-top:2px;accent-color:#2b97d6;">
+          <span>I agree to receive emails containing quotes, news, and exclusive offers.</span>
+        </label>
+        <button type="submit" class="btn-primary" style="padding:15px;font-size:15px;" id="quote-submit-btn">Send My Build</button>
+      </form>`;
+    document.getElementById('quote-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const customerName  = form.querySelector('[name="name"]').value.trim();
+      const customerEmail = form.querySelector('[name="email"]').value.trim();
+      const customerPhone = form.querySelector('[name="phone"]').value.trim();
+
+      // Disable button and show loading state
+      const btn = document.getElementById('quote-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      // Generate and download PDF
+      try {
+        const doc = await generateBuildPDF(customerName, customerEmail, customerPhone, layout, buildSummaryItems(), total);
+        doc.save('Bespoke-Minibus-Build-' + layout.name + '.pdf');
+      } catch(err) {
+        console.error('PDF generation failed:', err);
+      }
+
+      // Send emails
+      await sendBuildEmails(customerName, customerEmail, customerPhone, layout, buildSummaryItems(), total);
+
+      state.quoteSent = true;
+      renderQuoteForm(layout, total);
+    });
+  }
+}
+
+// ===================== MAIN RENDER =====================
+function render() {
+  const page = state.page;
+
+  // Update nav active states
+  document.querySelectorAll('[data-go]').forEach(el => {
+    if (el.classList.contains('nav-link')) {
+      el.classList.toggle('active', el.dataset.go === page);
+    }
+  });
+
+  // Show/hide pages
+  PAGES.forEach(p => {
+    document.getElementById('page-' + p).classList.toggle('active', p === page);
+  });
+
+  // Page-specific renders
+  if (page === 'gallery') renderGallery();
+  if (page === 'faq') renderFaq();
+  if (page === 'contact') renderContact();
+  if (page === 'builder') {
+    document.getElementById('builder-config').style.display = 'block';
+    document.getElementById('builder-quote').style.display = 'none';
+    renderBuilder();
+  }
+}
+
+// ===================== GLOBAL EVENT DELEGATION =====================
+document.addEventListener('click', e => {
+  const goBtn = e.target.closest('[data-go]');
+  if (goBtn) { e.preventDefault(); go(goBtn.dataset.go); return; }
+
+  const homeLb = e.target.closest('[data-home-lb]');
+  if (homeLb) {
+    const idx = +homeLb.dataset.homeLb;
+    openLightbox(BUILD_PHOTOS.home, idx, 'S34 Build');
+    return;
+  }
+});
+
+// ===================== INIT =====================
+(function init() {
+  const h = (location.hash || '').replace('#','');
+  if (h && PAGES.includes(h)) state.page = h;
+  render();
+})();
+</script>
+</body>
+</html>
